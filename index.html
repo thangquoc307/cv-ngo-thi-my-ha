@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>Ngo_Thi_My_Ha</title>
     <link rel="stylesheet" href="style/maincss.css">
+    <script src="JS/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
-<body class="background3">
+<body class="background3 scroll-custom">
 <div class="language-switcher hover" onclick="setLanguage()"></div>
 <div class="main_port">
     <div class="info">
@@ -28,6 +30,11 @@
                 <p>linkedin.com/in/ngô-thị-mỹ-ha</p>
             </div>
         </div>
+        <div class="info-img">
+            <div class="border-pic">
+                <div></div>
+            </div>
+        </div>
     </div>
     <div class="detail-port">
         <div class="detail-certificate">
@@ -35,6 +42,7 @@
                 <h2 data-i18n="education"></h2>
                 <hr>
                 <h3>2019 - 2023</h3>
+                <p class="fontborder" data-i18n="school"></p>
                 <p data-i18n="major"></p>
                 <p data-i18n="gpa"></p>
             </div>
@@ -54,12 +62,26 @@
                 <p data-i18n="skill_5"></p>
                 <p data-i18n="skill_6"></p>
             </div>
+
+            <div id="map_data">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1073.6226516733798!2d106.66599211794589!3d10.844786099271046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752918167f1e15%3A0x9f69abec822cef8!2zNDQwIMSQLiBUaOG7kW5nIE5o4bqldCwgUGjGsOG7nW5nIDE2LCBHw7IgVuG6pXAsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1739587831848!5m2!1svi!2s"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <p data-i18n="location"></p>
+            </div>
         </div>
         <div class="detail-work">
             <h2 data-i18n="profile"></h2>
             <hr>
             <p data-i18n="profile_desc_1"></p>
             <p data-i18n="profile_desc_2"></p>
+
+            <h2 data-i18n="certification"></h2>
+            <hr>
+            <div id="certificate-box"></div>
+
 
             <h2 data-i18n="work_experience"></h2>
             <hr>
@@ -99,6 +121,13 @@
             </div>
         </div>
     </div>
+    <div id="overlay"></div>
+    <div id="popup">
+        <img id="popup-img"/>
+        <h1 id="popup-name"></h1>
+        <span onclick="closePopup()"
+              class="material-symbols-outlined popup-close">cancel</span>
+    </div>
 </div>
 <script>
     let isen = false;
@@ -106,6 +135,7 @@
         en: {
             name: "NGO THI MY HA",
             job_title: "ACCOUNT MANAGER",
+            school: "Industrial University of Ho Chi Minh City",
             education: "EDUCATION",
             major: "- Business Finance",
             gpa: "- GPA: 3.0/4.0",
@@ -140,12 +170,17 @@
             mb_responsibility_2: "Manage assigned customer portfolios. Conduct in-depth exploration and cross-selling of products and services to customers. Identify and develop new customers.",
             mb_responsibility_3: "Executed a campaign to open more than 100 accounts at the Dental Hospital.",
             mb_responsibility_4: "Cross-sold over 150 hybrid Visa cards.",
-            mb_responsibility_5: "Recognized as an outstanding intern specialist."
+            mb_responsibility_5: "Recognized as an outstanding intern specialist.",
+            location: "Address: 440 Thong Nhat, Go Vap District, Ho Chi Minh City",
+            certification: "CERTIFICATE",
+            date: "- Date: ",
+            institution: "- Institution: "
         },
         vi: {
             name: "NGÔ THỊ MỸ HẠ",
             job_title: "QUẢN LÝ TÀI KHOẢN",
             education: "GIÁO DỤC",
+            school: "ĐẠI HỌC CÔNG NGHIỆP TPHCM",
             major: "- Tài chính doanh nghiệp",
             gpa: "- GPA: 3.0/4.0",
             languages: "NGÔN NGỮ",
@@ -179,9 +214,27 @@
             mb_responsibility_2: "Quản lý danh mục khách hàng được phân giao. Thực hiện khai thác sâu và bán chéo các sản phẩm dịch vụ cho khách hàng. Tìm hiểu và phát triển khách hàng mới.",
             mb_responsibility_3: "Chạy chiến dịch mở thẻ hơn 100 tài khoản ở bệnh viện răng hàm mặt.",
             mb_responsibility_4: "Bán chéo hơn 150 thẻ visa hybrid.",
-            mb_responsibility_5: "Được vinh danh chuyên viên tập sự xuất sắc."
+            mb_responsibility_5: "Được vinh danh chuyên viên tập sự xuất sắc.",
+            location: "Địa chỉ: 440 Thống nhất, Q.Gò Vấp, TP.Hồ Chí Minh",
+            certification: "CHỨNG CHỈ",
+            date: "- Ngày cấp: ",
+            institution: "- Tổ chức: "
         }
     };
+    const certificate = [
+        {
+            name: "Ruijie Certified Pre Sales",
+            date: "2026-02-13",
+            institution: "Ruijie Networks Co., Ltd.",
+            pic: "/media/Ruijie_Pre_Sales.png"
+        },
+        {
+            name: "Ruijie Certified Sales",
+            date: "2026-06-07",
+            institution: "Ruijie Networks Co., Ltd.",
+            pic: "/media/Ruijie_Sales.png"
+        }
+    ]
 
     function setLanguage() {
         isen = !isen;
@@ -205,7 +258,51 @@
         window.open("https://www.linkedin.com/in/ngô-thị-mỹ-hạ", "_blank");
     }
 
+    function uploadCertification () {
+        let data = certificate.reduce((totalVal, val, index) => {
+            return totalVal + `<div>
+                <img src="${val.pic}"/>
+                <h3>${val.name}</h3>
+                <div>
+                    <p><span data-i18n="date"></span>${val.date}</p>
+                    <p><span data-i18n="institution"></span>${val.institution}</p>
+                </div>
+                <div>
+                    <span
+                        class="material-symbols-outlined"
+                        onclick="showCertification(${index})"
+                    >photo_library</span>
+                </div>
+            </div>`
+
+        }, "")
+        document.getElementById("certificate-box").innerHTML = data
+
+    }
+
+    function showCertification (index) {
+        let currentData = certificate[index];
+        $(document).ready(function () {
+            $("#overlay").fadeIn();
+            $("#popup").css({
+                "display": "grid",
+                "top": "-100%"})
+                .show().animate({ top: "30px" }, 500);
+            $("#popup-img").attr("src", currentData.pic);
+            $("#popup-name").text(currentData.name);
+        });
+
+    }
+    function closePopup () {
+        $("#popup").animate({ top: "-100%" }, 500, function () {
+            $(this).hide();
+            $("#overlay").fadeOut();
+        });
+    }
+
+    uploadCertification()
     setLanguage()
+
 </script>
 </body>
 </html>
