@@ -75,7 +75,8 @@
     padding-bottom: 200px;
     background-color: var(--color6);
     margin: calc(var(--radius) * 2) auto;
-    min-width: 1800px;
+    min-width: 1500px;
+    max-width: 1700px;
     border-radius: var(--radius);
     position: relative;
     box-shadow: var(--color4) 15px 30px 30px;
@@ -345,11 +346,12 @@
     align-items: center;
 }
 #certificate-box>div>div:nth-child(4)>span {
-    font-size: 35px;
+    font-size: 30px;
     background-color: var(--color3);
     padding: 10px;
     border-radius: 50%;
     color: var(--color4);
+    border: var(--color4) 2px solid;
     box-shadow: var(--color4) 5px 5px 20px;
     cursor: pointer;
     transition-duration: 0.2s;
@@ -359,7 +361,8 @@
     transition-duration: 0.2s;
     background-color: var(--color4);
     color: var(--color6);
-    scale: 1.2;
+    border: var(--color6) 2px solid;
+    scale: 1.1;
 }
 #overlay {
     position: fixed;
@@ -422,27 +425,6 @@
     scale: 1.05;
     transition-duration: 0.2s;
     background-color: var(--color5);
-}
-@media screen and (max-width: 1920px) {
-    :root {
-    }
-    .main_port {
-        width: 1400px;
-    }
-}
-@media screen and (max-width: 1440px) {
-    :root {
-    }
-    .main_port {
-        width: 1000px;
-    }
-}
-@media screen and (max-width: 1024px) {
-    :root {
-    }
-    .main_port {
-        width: 800px;
-    }
 }
 
 @keyframes changeImg {
