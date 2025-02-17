@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ngo_Thi_My_Ha</title>
+    <link rel="stylesheet" href="style/maincss.css">
+    <script src="JS/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body class="scroll-custom no-padding">
+<div class="pdf_port">
+    <div class="infopdf">
+        <div class="info-avatar"></div>
+        <div class="info-title">
+            <h1 data-i18n="name"></h1>
+            <h1 data-i18n="job_title"></h1>
+        </div>
+        <div class="info-detail">
+            <div class="info-phone hover" onclick="callPhone()">
+                <div></div>
+                <p>0345.001.058</p>
+            </div>
+            <div class="info-mail hover" onclick="sendEmail()">
+                <div></div>
+                <p>myha.240401@gmail.com</p>
+            </div>
+            <div class="info-linked hover" onclick="openLinkedIn()">
+                <div></div>
+                <p>linkedin.com/in/ngô-thị-mỹ-ha</p>
+            </div>
+        </div>
+    </div>
+    <div class="detail-port">
+        <div class="detail-certificate">
+            <div>
+                <h2 data-i18n="education"></h2>
+                <hr>
+                <h3>2019 - 2023</h3>
+                <p class="fontborder" data-i18n="school"></p>
+                <p data-i18n="major"></p>
+                <p data-i18n="gpa"></p>
+            </div>
+            <div>
+                <h2 data-i18n="languages"></h2>
+                <hr>
+                <h3>English</h3>
+                <p data-i18n="english_score"></p>
+            </div>
+            <div>
+                <h2 data-i18n="skills"></h2>
+                <hr>
+                <p data-i18n="skill_1"></p>
+                <p data-i18n="skill_2"></p>
+                <p data-i18n="skill_3"></p>
+                <p data-i18n="skill_4"></p>
+                <p data-i18n="skill_5"></p>
+                <p data-i18n="skill_6"></p>
+            </div>
+
+            <div id="map_data">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1073.6226516733798!2d106.66599211794589!3d10.844786099271046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752918167f1e15%3A0x9f69abec822cef8!2zNDQwIMSQLiBUaOG7kW5nIE5o4bqldCwgUGjGsOG7nW5nIDE2LCBHw7IgVuG6pXAsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1739587831848!5m2!1svi!2s"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <p data-i18n="location"></p>
+            </div>
+        </div>
+        <div class="detail-work">
+            <h2 data-i18n="profile"></h2>
+            <hr>
+            <p data-i18n="profile_desc_1"></p>
+            <p data-i18n="profile_desc_2"></p>
+
+            <h2 data-i18n="certification"></h2>
+            <hr>
+            <div id="certificate-box"></div>
+
+
+            <h2 data-i18n="work_experience"></h2>
+            <hr>
+            <div class="work-flow">
+                <h3 data-i18n="company_1"></h3>
+                <h3>2022-2025</h3>
+                <h3 data-i18n="position_1"></h3>
+                <div>
+                    <p data-i18n="sales_management"></p>
+                    <ul>
+                        <li data-i18n="responsibility_1"></li>
+                        <li data-i18n="responsibility_2"></li>
+                        <li data-i18n="responsibility_3"></li>
+                        <li data-i18n="responsibility_4"></li>
+                        <li data-i18n="responsibility_5"></li>
+                        <li data-i18n="responsibility_6"></li>
+                        <li data-i18n="responsibility_7"></li>
+                        <li data-i18n="responsibility_8"></li>
+                        <li data-i18n="responsibility_9"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="work-flow">
+                <h3 data-i18n="company_2"></h3>
+                <h3>2022</h3>
+                <h3 data-i18n="position_2"></h3>
+                <div>
+                    <ul>
+                        <li data-i18n="mb_responsibility_1"></li>
+                        <li data-i18n="mb_responsibility_2"></li>
+                        <li data-i18n="mb_responsibility_3"></li>
+                        <li data-i18n="mb_responsibility_4"></li>
+                        <li data-i18n="mb_responsibility_5"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <div id="popup">
+        <img id="popup-img"/>
+        <h1 id="popup-name"></h1>
+        <span onclick="closePopup()"
+              class="material-symbols-outlined popup-close">cancel</span>
+    </div>
+</div>
+<script src="JS/script.js"></script>
+</body>
+</html>
